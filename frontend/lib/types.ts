@@ -63,6 +63,7 @@ export interface LoginRequest {
  * Response from signup endpoint.
  */
 export interface SignupResponse {
+  token: string; // JWT token
   user: User;
   message: string;
 }

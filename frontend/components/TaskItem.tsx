@@ -8,7 +8,7 @@ interface TaskItemProps {
   onTaskChange: () => void;
 }
 
-export default function TaskItem({ task, onTaskChange }: TaskItemProps) {
+export default function TaskItem({ task, onTaskChange: _onTaskChange }: TaskItemProps) {
   const [isChecked, setIsChecked] = useState(task.is_complete);
 
   const handleCheckboxChange = () => {

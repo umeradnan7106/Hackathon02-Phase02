@@ -5,10 +5,6 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value || getTokenFromHeaders(request);
   const { pathname } = request.nextUrl;
 
-  // Public routes that don't require authentication
-  const publicRoutes = ["/", "/login", "/signup"];
-  const isPublicRoute = publicRoutes.includes(pathname);
-
   // Protected routes that require authentication
   const protectedRoutes = ["/tasks"];
   const isProtectedRoute = protectedRoutes.some((route) => pathname.startsWith(route));
@@ -29,7 +25,7 @@ export function middleware(request: NextRequest) {
 }
 
 // Helper to check for token in localStorage (client-side check)
-function getTokenFromHeaders(request: NextRequest): string | undefined {
+function getTokenFromHeaders(_request: NextRequest): string | undefined {
   // Since middleware runs on server, we check cookies
   // Client-side token from localStorage is handled by the API client
   return undefined;
